@@ -9,14 +9,14 @@ class InteractiveRecord
   end
 
   def self.column_names
-    DB[:conn].results_as_hash = true
+    # DB[:conn].results_as_hash = true
     sql = "PRAGMA table_info('#{table_name}')"
     table_info = DB[:conn].execute(sql)
     column_names = []
     table_info.each{|column| column_names << column["name"]}
     column_names.compact
   end
-  # => ***attr_accessor***
+  
   self.column_names.each{|col_name| attr_accessor col_name.to_sym}
 
   def initialize(attributes={})
