@@ -16,7 +16,7 @@ class InteractiveRecord
     table_info.each{|column| column_names << column["name"]}
     column_names.compact
   end
-  
+
   self.column_names.each{|col_name| attr_accessor col_name.to_sym}
 
   def initialize(attributes={})
